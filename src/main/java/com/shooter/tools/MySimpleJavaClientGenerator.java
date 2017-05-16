@@ -11,6 +11,7 @@ import org.mybatis.generator.api.dom.java.CompilationUnit;
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.java.Interface;
 import org.mybatis.generator.api.dom.java.JavaVisibility;
+import org.mybatis.generator.codegen.AbstractXmlGenerator;
 import org.mybatis.generator.codegen.mybatis3.javamapper.SimpleJavaClientGenerator;
 import org.mybatis.generator.config.PropertyRegistry;
 
@@ -60,6 +61,11 @@ public class MySimpleJavaClientGenerator extends SimpleJavaClientGenerator {
 
 	public MySimpleJavaClientGenerator() {
 		super(true);
+	}
+
+	@Override
+	public AbstractXmlGenerator getMatchedXMLGenerator() {
+		return new MySimpleXMLMapperGenerator();
 	}
 
 }

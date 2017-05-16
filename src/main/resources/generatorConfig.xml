@@ -52,7 +52,7 @@
 			<!-- 在targetPackage的基础上，根据数据库的schema再生成一层package -->
 			<property name="enableSubPackages" value="false" />
 			<!-- 是否创建一个不可变的类 -->
-			<property name="immutable" value="true" />
+			<property name="immutable" value="false" />
 			<!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
 			<!-- <property name="trimStrings" value="true" /> -->
 			<property name="rootClass" value="com.shooter.tools.BaseEntity" />
@@ -75,6 +75,7 @@
 		<!-- 要生成哪些表 -->
 		<table tableName="%">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+<!-- 			<columnOverride column="id" javaType="long" /> -->
 			<ignoreColumn column="created_time" />
 			<ignoreColumn column="last_modified_time" />
 		</table>

@@ -48,6 +48,44 @@ public class MyIntrospectedTableMyBatis3SimpleImpl extends IntrospectedTableMyBa
 		return javaGenerator;
 	}
 
+	/**
+	 * Calculate xml attributes.
+	 */
+	protected void calculateXmlAttributes() {
+		setIbatis2SqlMapPackage(calculateSqlMapPackage());
+		setIbatis2SqlMapFileName(calculateIbatis2SqlMapFileName());
+		setMyBatis3XmlMapperFileName(calculateMyBatis3XmlMapperFileName());
+		setMyBatis3XmlMapperPackage(calculateSqlMapPackage());
+
+		setIbatis2SqlMapNamespace(calculateIbatis2SqlMapNamespace());
+		setMyBatis3FallbackSqlMapNamespace(calculateMyBatis3FallbackSqlMapNamespace());
+
+		setSqlMapFullyQualifiedRuntimeTableName(calculateSqlMapFullyQualifiedRuntimeTableName());
+		setSqlMapAliasedFullyQualifiedRuntimeTableName(calculateSqlMapAliasedFullyQualifiedRuntimeTableName());
+
+		setCountByExampleStatementId("countByExample"); //$NON-NLS-1$
+		setDeleteByExampleStatementId("deleteByExample"); //$NON-NLS-1$
+		setDeleteByPrimaryKeyStatementId("deleteByID"); //$NON-NLS-1$
+		setInsertStatementId("insert"); //$NON-NLS-1$
+		setInsertSelectiveStatementId("insertSelective"); //$NON-NLS-1$
+		setSelectAllStatementId("selectAll"); //$NON-NLS-1$
+		setSelectByExampleStatementId("selectByExample"); //$NON-NLS-1$
+		setSelectByExampleWithBLOBsStatementId("selectByExampleWithBLOBs"); //$NON-NLS-1$
+		setSelectByPrimaryKeyStatementId("selectByID"); //$NON-NLS-1$
+		setUpdateByExampleStatementId("updateByExample"); //$NON-NLS-1$
+		setUpdateByExampleSelectiveStatementId("updateByExampleSelective"); //$NON-NLS-1$
+		setUpdateByExampleWithBLOBsStatementId("updateByExampleWithBLOBs"); //$NON-NLS-1$
+		setUpdateByPrimaryKeyStatementId("updateByID"); //$NON-NLS-1$
+		setUpdateByPrimaryKeySelectiveStatementId("updateByIDSelective"); //$NON-NLS-1$
+		setUpdateByPrimaryKeyWithBLOBsStatementId("updateByIDWithBLOBs"); //$NON-NLS-1$
+		setBaseResultMapId("BaseResultMap"); //$NON-NLS-1$
+		setResultMapWithBLOBsId("ResultMapWithBLOBs"); //$NON-NLS-1$
+		setExampleWhereClauseId("Example_Where_Clause"); //$NON-NLS-1$
+		setBaseColumnListId("Base_Column_List"); //$NON-NLS-1$
+		setBlobColumnListId("Blob_Column_List"); //$NON-NLS-1$
+		setMyBatis3UpdateByExampleWhereClauseId("Update_By_Example_Where_Clause"); //$NON-NLS-1$
+	}
+
 	@Override
 	protected void calculateJavaClientAttributes() {
 		if (context.getJavaClientGeneratorConfiguration() == null) {
