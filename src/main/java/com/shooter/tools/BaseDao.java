@@ -1,4 +1,4 @@
-package com.shooter.dao;
+package com.shooter.tools;
 
 import java.util.List;
 

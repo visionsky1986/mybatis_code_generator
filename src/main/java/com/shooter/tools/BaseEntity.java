@@ -1,4 +1,4 @@
-package com.shooter.entity;
+package com.shooter.tools;
 
 import java.io.Serializable;
 import java.util.Date;

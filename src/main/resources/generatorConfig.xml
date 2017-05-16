@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 	<!-- MyBatis3Simple 这是默认值 不会有"by example"一类的方法，只有少量的动态SQL。 flat 该模型为每一张表只生成一个实体类。这个实体类包含表中的所有字段 -->
-	<context id="default" targetRuntime="MyBatis3Simple"
+	<context id="default" targetRuntime="com.shooter.tools.MyIntrospectedTableMyBatis3SimpleImpl"
 		defaultModelType="flat">
 
 		<property name="javaFileEncoding" value="UTF-8" />
@@ -21,11 +21,13 @@
 		<!-- <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"></plugin> -->
 		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
 		<!-- <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin> -->
+		<plugin type="com.shooter.tools.LombokPlugin"></plugin>
+		<plugin type="com.shooter.tools.DAOPlugin"></plugin>
 
 
 		<!-- 不希望生成的注释中包含时间戳 -->
 		<commentGenerator>
-			<property name="suppressDate" value="false" />
+			<property name="suppressDate" value="true" />
 			<property name="suppressAllComments" value="true" />
 		</commentGenerator>
 
@@ -42,6 +44,7 @@
 
 		<javaModelGenerator targetPackage="com.shooter.entity"
 			targetProject="src/main/java">
+			<property name="trimStrings" value="true" />
 			<!-- 是否 自动为每一个生成的类创建一个构造方法 -->
 			<property name="constructorBased" value="false" />
 			<!-- <property name="useActualColumnNames" value="true" /> -->
@@ -51,19 +54,20 @@
 			<property name="immutable" value="true" />
 			<!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
 			<!-- <property name="trimStrings" value="true" /> -->
-			<property name="rootClass" value="com.shooter.entity.BaseEntity" />
+			<property name="rootClass" value="com.shooter.tools.BaseEntity" />
 		</javaModelGenerator>
 
 		<!-- 生成SQL map的XML文件生成器 -->
 		<sqlMapGenerator targetPackage="maps" targetProject="src/main/resources">
 			<property name="enableSubPackages" value="false" />
+			<property name="methodNameCalculator" value="com.shooter.tools.MyDAOMethodNameCalculator" />
 		</sqlMapGenerator>
 
 		<javaClientGenerator targetPackage="com.shooter.dao"
 			implementationPackage="com.shooter.dao.impl" targetProject="src/main/java"
 			type="XMLMAPPER">
 			<property name="enableSubPackages" value="true" />
-			<property name="rootInterface" value="com.shooter.dao.BaseDao" />
+			<property name="rootInterface" value="com.shooter.tools.BaseDao" />
 		</javaClientGenerator>
 
 		<!--这里包含SQL通配符，表示匹配所有demo开头的表 -->
