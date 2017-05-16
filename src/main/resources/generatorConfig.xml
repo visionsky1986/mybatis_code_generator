@@ -4,7 +4,8 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 	<!-- MyBatis3Simple 这是默认值 不会有"by example"一类的方法，只有少量的动态SQL。 flat 该模型为每一张表只生成一个实体类。这个实体类包含表中的所有字段 -->
-	<context id="default" targetRuntime="com.shooter.tools.MyIntrospectedTableMyBatis3SimpleImpl"
+	<context id="default"
+		targetRuntime="com.shooter.tools.MyIntrospectedTableMyBatis3SimpleImpl"
 		defaultModelType="flat">
 
 		<property name="javaFileEncoding" value="UTF-8" />
@@ -32,7 +33,7 @@
 		</commentGenerator>
 
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://118.178.136.252:3306/investment?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull"
+			connectionURL="jdbc:mysql://localhost:3306/investment?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull"
 			userId="root" password="my-test">
 		</jdbcConnection>
 
@@ -73,7 +74,9 @@
 		<!--这里包含SQL通配符，表示匹配所有demo开头的表 -->
 		<!-- 要生成哪些表 -->
 		<table tableName="%">
-			<generatedKey column="id" sqlStatement="Mysql" />
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+			<ignoreColumn column="created_time" />
+			<ignoreColumn column="last_modified_time" />
 		</table>
 
 	</context>
